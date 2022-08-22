@@ -1,0 +1,18 @@
+name: "CycleTrack study"
+navbar:
+  type: inverse
+  title: "CycleTrack study"
+  left:
+    - text: "About"
+      href: index.html
+    - text: "Register"
+      href: register.html
+    - text: "Baseline questionnaire"
+      href: baseline.html
+    - text: "Diary"
+      href: diary.html
+output_dir: "docs"
+output:
+  html_document:
+    theme: journal
+

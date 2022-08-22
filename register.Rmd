@@ -1,0 +1,27 @@
+---
+title: "Participant registration"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
+    toc_depth: 1
+    code_folding: hide
+---
+
+# Participant information
+
+What you will be asked to do...
+
+## How we will use and store your data
+
+X
+
+## Who to contact for more information
+
+X
+
+## Register
+
+<iframe width="640px" height="480px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=d10qkZj77k6vMhM02PBKU9HPWeR6L99CuDGUvWSAikpUN0kySkhZNjNVRUpKQks2M0gyMDJCVE9WWi4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>

@@ -1,0 +1,11 @@
+---
+title: "About the study"
+output: html_document
+---
+
+# **Welcome to CycleTrack**
+
+CycleTrack is a research study that aims to find out how mood and emotional symptoms vary over time.
+
+...
+
