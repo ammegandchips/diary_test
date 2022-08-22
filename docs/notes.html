@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>notes.knit</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CycleTrack study</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li>
+  <a href="register.html">Register</a>
+</li>
+<li>
+  <a href="baseline.html">Baseline questionnaire</a>
+</li>
+<li>
+  <a href="diary.html">Diary</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div
+id="ms-forms-embedded-in-a-rmd-generated-html-website-hosted-on-github"
+class="section level1">
+<h1>MS Forms embedded in a RMD generated HTML website (hosted on
+github)</h1>
+</div>
+<div id="sign-up-page" class="section level1">
+<h1>Sign up page</h1>
+<div
+id="this-page-will-allow-people-to-read-the-pis-and-sign-the-ic-form"
+class="section level2">
+<h2>This page will allow people to read the PIS and sign the IC
+form</h2>
+</div>
+<div
+id="they-will-enter-their-name-email-and-telephone-number-and-select-whether-they-want-to-be-emailed-reminders-to-log-data"
+class="section level2">
+<h2>They will enter their name, email and telephone number, and select
+whether they want to be emailed reminders to log data</h2>
+</div>
+<div
+id="periodically-the-responses-will-be-checked-and-the-participants-will-be-emailed-an-anonymous-username-to-use-when-they-log-their-data"
+class="section level2">
+<h2>Periodically, the responses will be checked and the participants
+will be emailed an anonymous username to use when they log their
+data</h2>
+</div>
+<div
+id="we-will-also-check-to-see-if-theyre-already-signed-up-is-their-email-address-already-in-user_db"
+class="section level2">
+<h2>We will also check to see if they’re already signed up (is their
+email address already in user_db?)</h2>
+</div>
+<div
+id="if-all-good-their-details-will-be-saved-in-a-user-database-user_db.csv-along-with-the-date-and-time-that-they-signed-the-ic-form.-this-file-will-be-saved-separately-from-any-other-user-data-and-not-used-for-research-purposes.-only-the-pi-will-have-access-to-this-file."
+class="section level2">
+<h2>If all good, their details will be saved in a user database
+(user_db.csv) along with the date and time that they signed the IC form.
+This file will be saved separately from any other user data and not used
+for research purposes. Only the PI will have access to this file.</h2>
+</div>
+<div
+id="anonymised-automatically-generated-participant_id-will-be-added-liked-to-username-before-sharing-the-other-datasets-with-researchers-so-researchers-never-see-name-or-username"
+class="section level2">
+<h2>anonymised automatically generated participant_id will be added
+(liked to username) before sharing the other datasets with researchers
+(so researchers never see name or username)</h2>
+<div
+id="output-user_db.csv-participant-id-username-name-email-phone-would-you-like-daily-reminder-emails-daily-reminder-texts-date-and-time-signed-up-automatically-generated-participant-id-used-to-link-to-anonymised-data-in-baseline.rds-and-daily.rds-at-the-user-level"
+class="section level3">
+<h3>OUTPUT: user_db.csv: participant ID, username, name, email, phone,
+would you like daily reminder emails, daily reminder texts, date and
+time signed up, automatically generated participant ID used to link to
+anonymised data in baseline.rds and daily.rds (at the user level)</h3>
+</div>
+</div>
+</div>
+<div id="baseline-questionnaire" class="section level1">
+<h1>Baseline questionnaire</h1>
+<div
+id="participant_id-will-be-added-after-data-collection-replacing-username-used-to-link-to-all-other-datasets-user_db.rds-daily.rds"
+class="section level2">
+<h2>participant_id: will be added after data collection (replacing
+username) used to link to all other datasets (user_db.rds,
+daily.rds)</h2>
+</div>
+<div
+id="trait-affect-was-assessed-with-the-positive-and-negative-affect-schedule-panas-watson-et-al.-1988-which-consists-of-20-mood-terms-that-are-rated-on-a-5-point-intensity-scale-based-on-individuals-general-experiences.-scores-on-the-na-and-pa-scales-have-shown-strong-internal-consistency-in-diverse-samples-alphas-0.790.92-good-convergent-and-discriminant-validity-with-other-measures-of-affectivity-and-adequate-retest-reliability-after-two-months-r-0.59-watson-and-clark-1999."
+class="section level2">
+<h2>Trait affect was assessed with the Positive and Negative Affect
+Schedule (PANAS; Watson et al., 1988), which consists of 20 mood terms
+that are rated on a 5-point intensity scale, based on individuals’
+general experiences. Scores on the NA and PA scales have shown strong
+internal consistency in diverse samples (alphas = 0.79–0.92), good
+convergent and discriminant validity with other measures of affectivity,
+and adequate retest reliability after two months (r = 0.59; Watson and
+Clark, 1999).</h2>
+</div>
+<div id="phq-9-gad-7" class="section level2">
+<h2>PHQ-9, GAD-7</h2>
+</div>
+<div
+id="idas-inventory-of-depression-and-anxiety-symptoms-is-99-items-long"
+class="section level2">
+<h2>IDAS ( Inventory of Depression and Anxiety Symptoms) is 99 items
+long</h2>
+</div>
+<div id="hormonal-contraceptive-replacement-treatment"
+class="section level2">
+<h2>Hormonal contraceptive / replacement treatment</h2>
+</div>
+<div id="age-sex-sep-height-weight-smoking-status-alcohol-status"
+class="section level2">
+<h2>Age, sex, SEP, height, weight, smoking status, alcohol status</h2>
+</div>
+<div id="regular-medication-free-text" class="section level2">
+<h2>Regular medication (free text)</h2>
+</div>
+<div
+id="gynaecological-health-and-history-previous-pregnancies-gynaecological-disorders"
+class="section level2">
+<h2>Gynaecological health and history (previous pregnancies,
+gynaecological disorders)</h2>
+</div>
+<div
+id="usual-menstrual-cycle-length-duration-of-bleeding-volume-pain-regularity-physical-symptoms-of-pms-emotional-symptoms-of-pms"
+class="section level2">
+<h2>Usual menstrual cycle length, duration of bleeding, volume, pain,
+regularity, physical symptoms of PMS, emotional symptoms of PMS</h2>
+</div>
+<div id="all-results-are-saved-in-baseline.rds" class="section level2">
+<h2>All results are saved in baseline.rds</h2>
+<div
+id="output-baseline.rds-at-the-user-level-unique-identifier-participant_id"
+class="section level3">
+<h3>OUTPUT: baseline.rds (at the user level; unique identifier:
+participant_id)</h3>
+</div>
+</div>
+</div>
+<div id="daily-questions" class="section level1">
+<h1>Daily questions</h1>
+<div
+id="httpspubmed.ncbi.nlm.nih.gov35175076-and-httpswww.sciencedirect.comsciencearticlepiis0165032718307572via3dihub"
+class="section level2">
+<h2><a href="https://pubmed.ncbi.nlm.nih.gov/35175076/"
+class="uri">https://pubmed.ncbi.nlm.nih.gov/35175076/</a> and <a
+href="https://www.sciencedirect.com/science/article/pii/S0165032718307572?via%3Dihub"
+class="uri">https://www.sciencedirect.com/science/article/pii/S0165032718307572?via%3Dihub</a></h2>
+</div>
+<div id="ema-idas-wellbeing-and-dysphoria" class="section level2">
+<h2>EMA-IDAS (wellbeing and dysphoria):</h2>
+</div>
+<div
+id="i-felt-optimistic-i-felt-that-i-had-accomplished-a-lot-i-felt-like-i-had-a-lot-to-look-forward-to-i-felt-like-i-had-a-lot-of-interesting-things-to-do"
+class="section level2">
+<h2>I felt optimistic / I felt that I had accomplished a lot / I felt
+like I had a lot to look forward to / I felt like i had a lot of
+interesting things to do</h2>
+</div>
+<div
+id="i-had-little-interest-in-my-usual-hobbies-or-activities-i-felt-depressed-i-felt-inadequate-i-felt-discouraged-about-things-i-had-trouble-concentrating"
+class="section level2">
+<h2>I had little interest in my usual hobbies or activities / I felt
+depressed / I felt inadequate / I felt discouraged about things / I had
+trouble concentrating</h2>
+</div>
+<div
+id="they-rated-how-much-each-statement-applies-to-them-in-the-moment-or-very-recently-using-a-scale-that-ranges-from-1-not-at-all-to-5extremely."
+class="section level2">
+<h2>They rated how much each statement applies to them in the moment (or
+very recently), using a scale that ranges from 1 (“not at all”) to
+5(“extremely”).</h2>
+</div>
+<div id="ema-panas-positive-and-negative-affect" class="section level2">
+<h2>EMA-PANAS (positive and negative affect):</h2>
+</div>
+<div
+id="participants-also-rated-their-current-pa-i.e.interested-active-strong-excited-and-na-i.e.-sad-upset-afraid-or-anxious-irritable-or-angry-during-ema-reports."
+class="section level2">
+<h2>Participants also rated their current PA (i.e.,interested, active,
+strong, excited) and NA (i.e., sad, upset, afraid or anxious, irritable,
+or angry) during EMA reports.</h2>
+</div>
+<div
+id="these-eight-terms-were-selected-from-the-panas-with-the-exception-of-sad-which-was-added-to-cover-a-full-range-of-na-relevant-to-dysphoria."
+class="section level2">
+<h2>These eight terms were selected from the PANAS, with the exception
+of “sad”, which was added to cover a full range of NA relevant to
+dysphoria.</h2>
+</div>
+<div
+id="participants-rated-these-items-using-a-scale-that-ranges-from-1-very-slightly-or-not-at-all-to-5-extremely."
+class="section level2">
+<h2>Participants rated these items using a scale that ranges from 1
+(“very slightly or not at all”) to 5 (“extremely”).</h2>
+</div>
+<div
+id="drsp---endicott-j-nee-j-harrison-w.-daily-record-of-severity-of-problems-drsp-reliability-and-validity.-arch-womens-ment-health.-springer-verlag-wein.-20069143."
+class="section level2">
+<h2>DRSP - Endicott J, Nee J, Harrison W. Daily Record of Severity of
+Problems (DRSP): reliability and validity. Arch Womens Ment Health.
+Springer-Verlag, Wein. 2006;9(1):43.</h2>
+</div>
+<div
+id="felt-depressed-sad-down-or-blue-felt-hopeless-felt-worthless-or-guilty-felt-anxious-tense-keyed-up-or-on-edge-had-mood-swings-e.g.-suddenly-felt-sad-or-tearful"
+class="section level2">
+<h2>Felt depressed, sad, down, or blue / Felt hopeless / Felt worthless
+or guilty / Felt anxious, tense, keyed up, or on edge / Had mood swings
+(e.g., suddenly felt sad or tearful)</h2>
+</div>
+<div
+id="was-more-sensitive-to-rejection-or-feelings-were-more-easily-hurt-felt-angry-irritable-had-conflicts-or-problems-with-people-had-less-interest-in-usual-activities-e.g.-work-school-friends-hobbies"
+class="section level2">
+<h2>Was more sensitive to rejection or feelings were more easily hurt /
+Felt angry, irritable / Had conflicts or problems with people / Had less
+interest in usual activities (e.g., work, school, friends, hobbies)
+/</h2>
+</div>
+<div
+id="had-difficulty-concentrating-felt-lethargic-tired-fatigued-or-had-a-lack-of-energy"
+class="section level2">
+<h2>Had difficulty concentrating / Felt lethargic, tired, fatigued, or
+had a lack of energy /</h2>
+</div>
+<div
+id="had-increased-appetite-or-overate-had-cravings-for-specific-foods-slept-more-took-naps-found-it-hard-to-get-up-when-intended"
+class="section level2">
+<h2>Had increased appetite or overate / Had cravings for specific foods
+/ Slept more, took naps, found it hard to get up when intended /</h2>
+</div>
+<div
+id="had-trouble-getting-to-sleep-or-staying-asleep-felt-overwhelmed-or-that-i-could-not-cope-felt-out-of-control-had-breast-tenderness-had-breast-swelling-felt-bloated-or-had-weight-gain"
+class="section level2">
+<h2>Had trouble getting to sleep or staying asleep / Felt overwhelmed or
+that I could not cope / Felt out of control / Had breast tenderness /
+Had breast swelling, felt bloated, or had weight gain /</h2>
+</div>
+<div
+id="had-headache-had-joint-or-muscle-pain-at-work-school-home-or-in-daily-routine-at-least-one-of-the-problems-noted-above-caused-reduced-productivity-or-inefficiency"
+class="section level2">
+<h2>Had headache / Had joint or muscle pain / At work, school, home, or
+in daily routine, at least one of the problems noted above caused
+reduced productivity or inefficiency /</h2>
+</div>
+<div
+id="at-least-one-of-the-problems-noted-above-interfered-with-hobbies-or-social-activities-e.g.-avoided-or-did-less"
+class="section level2">
+<h2>At least one of the problems noted above interfered with hobbies or
+social activities (e.g., avoided or did less) /</h2>
+</div>
+<div
+id="at-least-one-of-the-problems-noted-above-interfered-with-relationships-with-others"
+class="section level2">
+<h2>At least one of the problems noted above interfered with
+relationships with others /</h2>
+</div>
+<div
+id="menstrual-flow-h-heavy-m-medium-l-light-or-spotting-leave-blank-for-no-bleeding"
+class="section level2">
+<h2>Menstrual flow: H = heavy, M = medium, L = light or spotting; leave
+blank for no bleeding</h2>
+</div>
+<div
+id="record-the-score-for-each-item-on-each-day-using-the-following-scale-of-1-to-6-1not-at-all-2minimal-3mild-4moderate-5severe-6extreme."
+class="section level2">
+<h2>Record the score for each item on each day using the following scale
+of 1 to 6: 1=not at all, 2=minimal, 3=mild, 4=moderate, 5=severe,
+6=extreme.</h2>
+</div>
+<div
+id="in-past-24h-how-much-smoked-drank-alcohol-exercised-healthiness-of-diet-likert-scale-havent-eaten"
+class="section level2">
+<h2>In past 24h: How much smoked, drank alcohol, exercised, healthiness
+of diet (likert scale + haven’t eaten)</h2>
+</div>
+<div
+id="free-text-anything-you-want-to-tell-us---stressful-event-missed-medication-etc"
+class="section level2">
+<h2>Free text (anything you want to tell us - stressful event, missed
+medication, etc)</h2>
+<div
+id="output-daily.rds-at-the-instance-i.e.-day-level-uniquely-identified-using-a-combination-of-time_date-participant_id"
+class="section level3">
+<h3>OUTPUT: daily.rds (at the instance [i.e. day] level; uniquely
+identified using a combination of time_date + participant_id)</h3>
+<div id="phq-2-pdq-d-httpsmental.jmir.org201911e12814"
+class="section level4">
+<h4>PHQ-2 + PDQ-D <a href="https://mental.jmir.org/2019/11/e12814/"
+class="uri">https://mental.jmir.org/2019/11/e12814/</a></h4>
+</div>
+<div id="i-think-this-is-a-bit-too-negative" class="section level4">
+<h4>I THINK THIS IS A BIT TOO NEGATIVE</h4>
+</div>
+<div
+id="how-much-have-the-following-problems-bothered-you-over-the-past-day"
+class="section level4">
+<h4>How much have the following problems bothered you over the past
+day?</h4>
+</div>
+<div
+id="participants-rated-the-following-items-1-lack-of-interest-or-pleasure-in-doing-things-2-feeling-down-depressed-or-hopeless"
+class="section level4">
+<h4>Participants rated the following items: (1) lack of interest or
+pleasure in doing things; (2) feeling down, depressed, or hopeless;</h4>
+</div>
+<div
+id="and-3-trouble-concentrating-on-things-eg-newspaper-tv.-responses-were-coded-on-a-4-point-scale-of-severity-of-symptoms-1no-problem-2slightly-3somewhat-4greatly."
+class="section level4">
+<h4>and (3) trouble concentrating on things (eg, newspaper, TV).
+Responses were coded on a 4-point scale of severity of symptoms (1=no
+problem, 2=slightly, 3=somewhat, 4=greatly).</h4>
+</div>
+<div
+id="this-scale-was-modified-from-the-4-point-scale-of-the-phq-9-to-reflect-within-day-experiences-and-was-kept-consistent-for-the-pdq-d-item."
+class="section level4">
+<h4>This scale was modified from the 4-point scale of the PHQ-9 to
+reflect within-day experiences and was kept consistent for the PDQ-D
+item.</h4>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
